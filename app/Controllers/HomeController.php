@@ -10,11 +10,8 @@ class HomeController extends Controller
    {
       $contactModel = new Contact();
 
-      return $contactModel->delete(12);
+      $data = $contactModel->all();
 
-      return $this->view('home', [
-         'title' => 'Home Page',
-         'description' => 'Página de inicio'
-      ]);
+      return $this->view('home', $data);
    }   
 }
