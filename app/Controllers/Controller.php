@@ -23,4 +23,9 @@ class Controller
          return "El archivo no existe";
       }
    }
+
+   public function redirect($route)
+   {
+      header("Location: {$route}");
+   }
 }

@@ -67,15 +67,13 @@ class Route
 
       $uri = $_SERVER['REQUEST_URI'];
       $uri = trim($uri, '/');
-
       $uriSplited = explode("/", $uri);
+      $uriSplited = array_slice($uriSplited, 2);
 
-      if (count($uriSplited) === 4) {
-         $uriSplited = $uriSplited[2] .  '/' . $uriSplited[3];
-      } elseif (count($uriSplited) === 2) {
+      if(empty($uriSplited)){
          $uriSplited = '';
       } else {
-         $uriSplited = $uriSplited[2];
+         $uriSplited = implode("/", $uriSplited);
       }
 
       $method = $_SERVER['REQUEST_METHOD'];
@@ -83,7 +81,7 @@ class Route
       foreach (self::$routes[$method] as $route => $callback) {
 
          if (strpos($route, ':') !== false) {
-            $route = preg_replace('#:[a-zA-Z0-9]+#', '([a-zA-Z0-9]+)', $route);
+            $route = preg_replace('#:[a-zA-Z]+#', '([a-zA-Z0-9]+)', $route);
          }
 
          if (preg_match("#^$route$#", $uriSplited, $matches)) {

@@ -8,12 +8,12 @@
 </head>
 
 <body>
-   <h1>Contactos</h1>
-   <?php foreach ($data as $user) : ?>
+   <h1>App Principal</h1>
+   <!-- <?php foreach ($data as $user) : ?>
       <p>Nombre: <?= $user['name'] ?></p>
       <p>Correo: <?= $user['email'] ?></p>
       <br>
-   <?php endforeach; ?>
+   <?php endforeach; ?> -->
 </body>
 
 </html>
